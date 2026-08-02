@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Determinants of Life Expectancy Across U.S. Counties</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 40px auto;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #222;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<h1>Determinants of Life Expectancy Across U.S. Counties</h1>
+<p>
+This project examines the relationship between health conditions, healthcare access,
+and county-level life expectancy across the United States. Using pooled county-year
+data from 2019&ndash;2023, the analysis applies multiple linear regression and logistic
+regression with Lasso-based variable selection to identify which health and insurance
+factors most strongly predict life expectancy outcomes.
+</p>
+<p>
+<em>This analysis was completed as part of a larger group research project, in which
+each member independently analyzed a different domain of predictors (socioeconomic,
+environmental, healthcare, mobility, and food systems) before the findings were
+synthesized into a comparative paper. This repository documents my individual
+contribution: the health conditions and healthcare access analysis, including
+my code, data processing, and findings.</em>
+</p>
+<h2>Business Context</h2>
+<p>
+County of residence is often a stronger predictor of lifespan than genetics, and these
+geographic gaps in life expectancy have widened even as national health spending has
+climbed. Public health planners and policymakers need to understand which determinants
+carry the most weight once correlated factors are accounted for. This analysis focuses
+on whether disease burden and insurance coverage, independent of other socioeconomic
+and environmental factors, can reliably predict county-level life expectancy.
+</p>
+<h2>Dataset</h2>
+<ul>
+  <li>CDC PLACES: Local Data for Better Health (2022, 2023, 2024 releases)</li>
+  <li>County Health Rankings, Life Expectancy Data (2019&ndash;2023)</li>
+  <li>U.S. Census Bureau, Healthcare Coverage, 2023 5-Year Estimates</li>
+  <li>15,359 county-year observations across 5 years and 20 variables</li>
+  <li>Response variable: county-level life expectancy</li>
+</ul>
+<h2>Methods</h2>
+<ul>
+  <li>Data merging and cleaning across three public health data sources</li>
+  <li>Exploratory data analysis and outlier screening</li>
+  <li>Variable selection via Lasso regression</li>
+  <li>Multiple linear regression with goodness-of-fit diagnostics</li>
+  <li>Logistic regression (binary above/below national average life expectancy)</li>
+  <li>Multicollinearity assessment via VIF</li>
+  <li>10-fold cross-validation for model performance comparison</li>
+</ul>
+<h2>Final Results</h2>
+<ul>
+  <li><strong>Linear Regression:</strong> R&sup2; = 0.616 | RMSE = 1.777 (test set)</li>
+  <li><strong>Logistic Regression:</strong> Accuracy = 81.43% | AUC = 0.897 (test set)</li>
+  <li>Both models confirmed stable via 10-fold cross-validation</li>
+  <li><strong>Key predictors:</strong> Stroke and COPD prevalence were the strongest drivers of reduced life expectancy, consistent across both models</li>
+  <li>Lack of insurance coverage (Uninsured_Total) showed a meaningful negative effect independent of disease burden</li>
+</ul>
+<h2>Analysis Outputs</h2>
+<ul>
+  <li><a href="data_processing_and_analysis.html">Data Processing and Analysis</a></li>
+</ul>
+<h2>Source Code & Documentation</h2>
+<p>
+Full methodology, R code, and reproducibility details are available in the
+<a href="https://github.com/catalinavalenciad/us-life-expectancy-analysis">
+GitHub repository
+</a>.
+</p>
+<hr>
+<p>
+<strong>Author:</strong> Catalina Valencia<br>
+<a href="https://www.linkedin.com/in/catalina-valencia/">LinkedIn</a>
+</p>
+</body>
+</html>
